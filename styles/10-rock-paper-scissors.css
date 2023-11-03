@@ -1,0 +1,45 @@
+body{
+    background-color:black;
+    color:white;
+    font-family:Arial;
+  }
+  .move-button{
+    padding:0px;
+    margin:0px;
+    border-radius:10px;
+  }
+  .title{
+    font-size:35px;
+    font-weight:bold;
+  }
+  .move-icon{
+    height:100px;
+    background-color:transparent;
+    cursor:pointer;
+  }
+  .move-icon-scissors{
+    height:100px;
+    background-color: transparent;
+    width:118px;
+    cursor:pointer;
+  }
+  .js-result,.js-moves{
+    font-size:18px;
+  }
+  .score{
+    margin-top:60px;
+  }
+  .button-size{
+    font-size:15px;
+    border:none;
+    padding:8px 15px;
+    cursor:pointer;
+  }.result{
+    font-size:25px;
+    font-weight:bold;
+    margin-top:50px;
+  }
+  .move{
+    height:50px;
+    background-color: transparent;
+  }

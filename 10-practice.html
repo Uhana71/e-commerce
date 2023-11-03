@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Practice</title>
+        <style>
+            .Button{
+                background-color: rgb(255,216,20);
+                width:200px;
+                padding:5px 40px;
+                border:none;
+                border-radius:20px;
+                cursor:pointer;
+            }
+            .toggle-button{
+                background-attachment: rgb(230,230,230);
+                border:none;
+                padding:10px 15px;
+                border-radius:5px;
+                margin-right:10px;
+                font-size:15px;
+                cursor:pointer;
+            }
+            .is-toggled{
+                background-color: black;
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="Button">Add to Cart</button>
+        <button>Request now</button>
+        <button class="toggle-button js-button" onclick="
+        const button=document.querySelector('.js-button');
+        if(!button.classList.contains('is-toggled')){
+            button.classList.add('is-toggled');
+        }else{
+            button.classList.remove('is-toggled');
+        }
+        ">Gaming</button>
+    </body>
+</html>

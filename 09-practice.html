@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Practice</title> 
+    </head>
+    <body>
+        <button onclick="
+        document.querySelector('.js-choice').innerHTML='You chose: heads';
+        ">heads</button>
+
+        <button onclick="
+        document.querySelector('.js-choice').innerHTML='You chose: tails';
+        ">tails</button>
+        <p class="js-choice"></p>
+
+        <input placeholder="Name" class="js-name" onkeydown="
+        if(event.key==='Enter'){
+            fun();
+        }">
+        <button onclick="
+            fun();
+        ">Submit</button>
+        <p class="js-message"></p>
+
+        <p>Amazon Shipping Calculator</p>
+        <input placeholder="Cost of order" class="js-cost" onkeydown="handleCostKeydown(event);">
+        <button onclick="
+        calculateTotal();
+        ">Calculate</button>
+        <p class="js-total"></p>
+
+        <input placeholder="Type Something" class="js-input" onkeyup="
+        const inputElement = document.querySelector('.js-input');
+        document.querySelector('.js-text').innerHTML=inputElement.value;
+        ">
+        <p class="js-text"></p>
+
+        <button onclick="displayCartQuantity()">Show Quantity</button>
+        <button onclick="
+        updateCartQuantity(+1);
+        ">Add to Cart</button>
+        <button onclick="
+        updateCartQuantity(+2);
+        ">+2</button>
+        <button onclick="
+        updateCartQuantity(+3);
+        ">+3</button>
+        <button onclick="
+        updateCartQuantity(+4);
+        ">+4</button>
+        <button onclick="
+        updateCartQuantity(+5);
+        ">+5</button>
+        <button onclick="
+        updateCartQuantity(-1);
+        ">Remove from cart</button>
+        <button onclick="
+        updateCartQuantity(-2);
+        ">-2</button>
+        <button onclick="
+        updateCartQuantity(-3);
+        ">-3</button>
+        <button onclick="
+        console.log('Cart was reset.');
+        displayCartQuantity();
+        ">Reset Cart</button>
+        <p class="js-cart-quantity"></p>
+
+        
+        <p class="js-calculation"></p>
+        <p>
+            <button onclick="updatecalc('1')">1</button>
+            <button onclick="updatecalc('2')">2</button>
+            <button onclick="updatecalc('3')">3</button>
+            <button onclick="updatecalc('+')">+</button>
+        </p>
+        <p>
+            <button onclick="updatecalc('4')">4</button>
+            <button onclick="updatecalc('5')">5</button>
+            <button onclick="updatecalc('6')">6</button>
+            <button onclick="updatecalc('-')">-</button>
+        </p>
+        <p>
+            <button onclick="updatecalc('7')">7</button>
+            <button onclick="updatecalc('8')">8</button>
+            <button onclick="updatecalc('9')">9</button>
+            <button onclick="updatecalc('*')">*</button>
+        </p>
+        <p>
+            <button onclick="updatecalc('0')">0</button>
+            <button onclick="updatecalc('.')">.</button>
+            <button onclick="
+            calculation=eval(calculation);
+            displayCalculation();
+            localStorage.setItem('calculation',calculation);
+            ">=</button>
+            <button onclick="updateCalc('/')">/</button>
+        </p>
+        <p>
+            <button onclick="
+                calculation='';
+                displayCalculation();
+                localStorage.setItem('calculation',calculation);">Clear</button>
+        </p>
+        
+         
+        <script>
+           function fun(){
+            const inputElement=document.querySelector('.js-name');
+            document.querySelector('.js-message').innerHTML=`Your name is: ${inputElement.value}`;
+           }
+
+           function handleCostKeydown(event){
+            if(event.key==='Enter'){
+                calculateTotal();
+            }
+           }
+
+            function calculateTotal(){
+                const inputElement=document.querySelector('.js-cost');
+                let cost=Number(inputElement.value)*100;
+                if(cost<4000){
+                    cost+=1000;
+                }
+                document.querySelector('.js-total').innerHTML=`$${cost/100}`;
+            }
+            let cartQuantity=0;
+            displayCartQuantity();
+            function updateCartQuantity(change){
+                if(cartQuantity+change>10){
+                    alert('The cart is full');
+                    return;
+                }
+                if(cartQuantity+change<0){
+                    alert('Not enough items in the cart');
+                    return;
+                }
+                cartQuantity+=change;
+                displayCartQuantity();
+            }
+            function displayCartQuantity(){
+               document.querySelector('.js-cart-quantity').innerHTML=`Cart quantity: ${cartQuantity}`;
+            }
+
+            let calculation=localStorage.getItem('calculation') || '';
+            displayCalculation();
+            function updatecalc(value){
+                calculation+=value;
+                displayCalculation();
+                localStorage.setItem('calculation',calculation);
+            }
+            function displayCalculation(){
+                document.querySelector('.js-calculation').innerHTML=calculation;
+            }
+        </script>
+    </body>
+</html>
